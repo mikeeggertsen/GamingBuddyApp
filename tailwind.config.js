@@ -8,6 +8,12 @@ module.exports = {
         'theme-light-dark': '#1B1F24',
         'theme-dark': '#121418',
       },
+      minWidth: {
+        48: '12rem',
+      },
+      fontSize: {
+        '2xs': '0.65rem',
+      },
     },
   },
   plugins: [],
