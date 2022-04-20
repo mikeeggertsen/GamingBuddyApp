@@ -2,7 +2,6 @@ import {
   faClose,
   faGamepad,
   faPaperPlane,
-  faPlane,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ScrollList from '../lists/ScrollList';

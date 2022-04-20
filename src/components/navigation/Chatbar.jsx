@@ -1,7 +1,6 @@
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ScrollList from '../lists/ScrollList';
 
 export default function Chatbar() {
   const buddies = [
