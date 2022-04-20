@@ -5,6 +5,7 @@ import {
   faGamepad,
   faInbox,
   faUsers,
+  faUser,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useContext } from 'react';
@@ -18,6 +19,7 @@ export default function Sidebar() {
     { title: 'Find buddies', icon: faGamepad, path: '/findbuddies' },
     { title: 'Matches', icon: faUsers, path: '/matches' },
     { title: 'Inbox', icon: faInbox, path: '/inbox' },
+    { title: 'Profile', icon: faUser, path: '/profile' },
   ];
   return (
     <div

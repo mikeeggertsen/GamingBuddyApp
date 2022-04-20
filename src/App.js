@@ -6,6 +6,7 @@ import { useState } from 'react';
 import FindBuddies from './screens/FindBuddies';
 import Matches from './screens/Matches';
 import Inbox from './screens/Inbox';
+import Profile from './screens/Profile';
 
 export default function App() {
   const [open, setOpen] = useState(true);
@@ -18,6 +19,7 @@ export default function App() {
           <Route exact path="/findbuddies" element={<FindBuddies />} />
           <Route exact path="/matches" element={<Matches />} />
           <Route exact path="/inbox" element={<Inbox />} />
+          <Route exact path="/profile" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </SidebarContext.Provider>
