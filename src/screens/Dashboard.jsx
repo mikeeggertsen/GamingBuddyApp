@@ -1,5 +1,6 @@
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import CardPlatformGame from '../components/cards/CardPlatformGame';
 import Container from '../components/layout/Container';
 import ScrollList from '../components/lists/ScrollList';
 
@@ -27,20 +28,7 @@ export default function Dashboard() {
   ];
 
   function renderCard(item, index) {
-    return (
-      <li
-        key={index}
-        className="min-w-48 w-48 h-64 hover:scale-105 duration-300 cursor-pointer"
-      >
-        <img
-          className={`h-full object-cover rounded-md ${
-            item?.background && 'bg-' + item.background
-          }`}
-          src={item.image}
-          alt="gamelogo"
-        />
-      </li>
-    );
+    return <CardPlatformGame key={index} item={item} />;
   }
 
   return (
