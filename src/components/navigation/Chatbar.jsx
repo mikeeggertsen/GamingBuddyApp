@@ -15,7 +15,7 @@ export default function Chatbar() {
     },
   ];
 
-  const activity = [
+  const activities = [
     { username: 'Luca Ryholt', date: '30 min ago' },
     { username: 'Mike Eggertsen', date: '1 hour ago' },
     { username: 'Asbjørn Garne', date: '1 day ago' },
@@ -27,7 +27,7 @@ export default function Chatbar() {
     return (
       <div
         key={index}
-        className="flex flex-row justify-between p-2 items-center w-56 h-18 rounded-md bg-theme-light-dark hover:scale-105 duration-300"
+        className="flex flex-row justify-between p-2 items-center w-56 h-18 rounded-md bg-theme-light-dark hover:scale-105 duration-300 cursor-pointer"
       >
         <div className="flex flex-row items-center">
           <div className="h-10 w-10 flex items-center justify-center rounded-full bg-theme-green mr-4">
@@ -67,11 +67,15 @@ export default function Chatbar() {
       <h3 className="text-white text-xl font-medium mt-4 mb-4">
         Recent buddies
       </h3>
-      <ScrollList data={buddies} renderItem={renderBuddy} />
+      <ul className={` flex flex-col gap-6 p-2`}>
+        {buddies.map((item, index) => renderBuddy(item, index))}
+      </ul>
       <h3 className="text-white text-xl font-medium mt-4 mb-4">
         Recent activity
       </h3>
-      <ScrollList data={activity} renderItem={renderActivity} />
+      <ul className={` flex flex-col gap-6 p-2`}>
+        {activities.map((item, index) => renderActivity(item, index))}
+      </ul>
     </div>
   );
 }
