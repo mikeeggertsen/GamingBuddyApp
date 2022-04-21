@@ -1,34 +1,46 @@
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from 'react-router-dom';
 import CardPlatformGame from '../components/cards/CardPlatformGame';
 import Container from '../components/layout/Container';
 import ScrollList from '../components/lists/ScrollList';
 
 export default function Dashboard() {
   const games = [
-    { image: './games/csgo.jpeg' },
-    { image: './games/dota2.jpeg' },
-    { image: './games/fifa22.jpeg' },
-    { image: './games/fortnite.jpeg' },
-    { image: './games/gtav.jpeg' },
-    { image: './games/lol.jpeg' },
-    { image: './games/minecraft.jpeg' },
-    { image: './games/rocketleague.jpeg' },
-    { image: './games/valorant.jpeg' },
-    { image: './games/wow.jpeg' },
+    { name: 'CS:GO', image: './games/csgo.jpeg' },
+    { name: 'Dota 2', image: './games/dota2.jpeg' },
+    { name: 'Fifa 22', image: './games/fifa22.jpeg' },
+    { name: 'Fortnite', image: './games/fortnite.jpeg' },
+    { name: 'GTA V', image: './games/gtav.jpeg' },
+    { name: 'LOL', image: './games/lol.jpeg' },
+    { name: 'Minecraft', image: './games/minecraft.jpeg' },
+    { name: 'Rocket League', image: './games/rocketleague.jpeg' },
+    { name: 'Valorant', image: './games/valorant.jpeg' },
+    { name: 'World of Warcraft', image: './games/wow.jpeg' },
   ];
   const platforms = [
-    { image: './platforms/steam.jpg' },
-    { image: './platforms/riot.png' },
-    { image: './platforms/blizzard.jpg' },
-    { image: './platforms/origin.png', background: 'white' },
-    { image: './platforms/playstation.jpeg' },
-    { image: './platforms/xbox.jpeg' },
-    { image: './platforms/switch.png' },
+    { name: 'Steam', image: './platforms/steam.jpg' },
+    { name: 'Riot', image: './platforms/riot.png' },
+    { name: 'Blizzard', image: './platforms/blizzard.jpg' },
+    { name: 'Origin', image: './platforms/origin.png', background: 'white' },
+    { name: 'Playstation', image: './platforms/playstation.jpeg' },
+    { name: 'Xbox', image: './platforms/xbox.jpeg' },
+    { name: 'Switch', image: './platforms/switch.png' },
   ];
+  const navigate = useNavigate();
+
+  function navigateToFindBuddies(filter) {
+    navigate(`/findbuddies?filter=${filter}`);
+  }
 
   function renderCard(item, index) {
-    return <CardPlatformGame key={index} item={item} />;
+    return (
+      <CardPlatformGame
+        key={index}
+        item={item}
+        onClick={navigateToFindBuddies}
+      />
+    );
   }
 
   return (

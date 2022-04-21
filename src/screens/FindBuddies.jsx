@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import CardBuddy from '../components/cards/CardBuddy';
 import Container from '../components/layout/Container';
 
@@ -40,6 +41,7 @@ export default function FindBuddies() {
   const [buddies, setBuddies] = useState([]);
   const [canFetch, setCanFetch] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
     fetchBuddies();
@@ -54,8 +56,9 @@ export default function FindBuddies() {
   async function fetchBuddies() {
     if (!canFetch) return;
     // fetch buddies
+    const searchParam = searchParams.get('filter');
+    // brug searchParam i api kald
     const fetchedBuddies = data.slice(0, 10);
-    console.log(fetchedBuddies.length);
     // tjek om der er flere der kan fetches
     if (fetchedBuddies.length < PAGINATION) {
       // set can fetch til false hvis under forventet antal
