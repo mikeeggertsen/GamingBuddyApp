@@ -96,7 +96,7 @@ export default function FindBuddies() {
       {isLoading ? (
         <h1 className="text-white text-2xl">Loading...</h1>
       ) : (
-        <div className="flex flex-row flex-wrap gap-4">
+        <div className="grid grid-flow-row grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {buddies.map(renderBuddy)}
         </div>
       )}
