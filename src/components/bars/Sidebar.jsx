@@ -15,7 +15,7 @@ export default function Sidebar() {
   const { open, setOpen } = useContext(SidebarContext);
 
   const menuItems = [
-    { title: 'Dashboard', icon: faHome, path: '/' },
+    { title: 'Dashboard', icon: faHome, path: '/dashboard' },
     { title: 'Find buddies', icon: faGamepad, path: '/findbuddies' },
     { title: 'Matches', icon: faUsers, path: '/matches' },
     { title: 'Inbox', icon: faInbox, path: '/inbox' },
