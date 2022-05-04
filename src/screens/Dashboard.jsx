@@ -1,9 +1,11 @@
 import { faBell } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useNavigate } from 'react-router-dom';
+import { useSetRecoilState } from 'recoil';
 import CardPlatformGame from '../components/cards/CardPlatformGame';
 import Container from '../components/layout/Container';
 import ScrollList from '../components/lists/ScrollList';
+import { userState } from '../recoil/atoms/user';
 
 export default function Dashboard() {
   const games = [
@@ -27,10 +29,17 @@ export default function Dashboard() {
     { name: 'Xbox', image: './platforms/xbox.jpeg' },
     { name: 'Switch', image: './platforms/switch.png' },
   ];
+  const setUser = useSetRecoilState(userState);
   const navigate = useNavigate();
 
   function navigateToFindBuddies(filter) {
     navigate(`/findbuddies?filter=${filter}`);
+  }
+
+  function signOut() {
+    localStorage.removeItem('token');
+    setUser({});
+    window.location = '/';
   }
 
   function renderCard(item, index) {
@@ -50,7 +59,9 @@ export default function Dashboard() {
         <h1 className="text-white font-medium text-2xl">Dashboard</h1>
         <div className="flex flex-row items-center gap-x-5">
           <FontAwesomeIcon className="text-white" size={'lg'} icon={faBell} />
-          <div className="bg-theme-green h-8 w-8 rounded-full"></div>
+          <button onClick={signOut} className="text-theme-green w-fit text-sm">
+            Sign out
+          </button>
         </div>
       </div>
       {/** BANNER */}
