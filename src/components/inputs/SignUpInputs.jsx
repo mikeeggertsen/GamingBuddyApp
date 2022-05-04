@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { signUpUser } from '../../requests/auth';
 
-export default function SignUpInputs() {
+export default function SignUpInputs({ navigateToSignIn }) {
   const [signUpState, setSignUpState] = useState({
+    username: '',
     email: '',
     password: '',
     repeatPassword: '',
@@ -14,9 +16,9 @@ export default function SignUpInputs() {
 
   async function signUp() {
     setError('');
-    const { email, password, repeatPassword } = signUpState;
+    const { username, email, password, repeatPassword } = signUpState;
 
-    if (!email || !password || !repeatPassword) {
+    if (!username || !email || !password || !repeatPassword) {
       setError(`Please fill out missing fields`);
       return;
     }
@@ -24,6 +26,20 @@ export default function SignUpInputs() {
     if (password !== repeatPassword) {
       setError(`Passwords doesn't match`);
       return;
+    }
+
+    const msg = await signUpUser({ username, email, password });
+
+    if (msg === 'Your account has been created') {
+      setSignUpState({
+        username: '',
+        email: '',
+        password: '',
+        repeatPassword: '',
+      });
+      navigateToSignIn();
+    } else {
+      setError(msg);
     }
   }
 
@@ -37,6 +53,15 @@ export default function SignUpInputs() {
           value={signUpState.email}
           onChange={({ target: { value } }) =>
             setSignUpProperty({ email: value })
+          }
+        />
+        <input
+          className={inputStyle}
+          type="text"
+          placeholder="Username"
+          value={signUpState.username}
+          onChange={({ target: { value } }) =>
+            setSignUpProperty({ username: value })
           }
         />
         <input

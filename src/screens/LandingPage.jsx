@@ -21,7 +21,11 @@ export default function SignUp() {
             pariatur totam autem corrupti
           </p>
         </div>
-        {showSignIn ? <SignInInputs /> : <SignUpInputs />}
+        {showSignIn ? (
+          <SignInInputs />
+        ) : (
+          <SignUpInputs navigateToSignIn={() => setShowSignIn(true)} />
+        )}
         <div className="flex flex-row gap-2">
           <h5 className="text-white">
             {showSignIn

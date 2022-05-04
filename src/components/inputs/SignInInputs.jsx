@@ -1,4 +1,7 @@
 import { useState } from 'react';
+import { useSetRecoilState } from 'recoil';
+import { userState } from '../../recoil/atoms/user';
+import { signInUser } from '../../requests/auth';
 
 export default function SignInInputs() {
   const [signInState, setSignInState] = useState({
@@ -6,6 +9,7 @@ export default function SignInInputs() {
     password: '',
   });
   const [error, setError] = useState('');
+  const setUser = useSetRecoilState(userState);
 
   function setSignUpProperty(property) {
     setSignInState((prev) => ({ ...prev, ...property }));
@@ -17,6 +21,19 @@ export default function SignInInputs() {
     if (!email || !password) {
       setError(`Please fill out missing fields`);
       return;
+    }
+    const { token, user } = await signInUser(email, password);
+
+    if (token && user) {
+      setSignInState({
+        email: '',
+        password: '',
+      });
+      localStorage.setItem('token', token);
+      setUser(user, token);
+      window.location = '/dashboard';
+    } else {
+      setError('Failed to sign in');
     }
   }
 
