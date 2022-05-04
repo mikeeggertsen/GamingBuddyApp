@@ -13,6 +13,8 @@ export async function useCachedResources() {
       if (token) {
         const res = await getOwnUser();
         setUser(res.data);
+      } else {
+        setUser(undefined);
       }
     } catch (error) {
       console.log('Failed using cached resources', error);
