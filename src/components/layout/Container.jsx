@@ -1,5 +1,5 @@
-import Chatbar from '../navigation/Chatbar';
-import Sidebar from '../navigation/Sidebar';
+import Chatbar from '../bars/Chatbar';
+import Sidebar from '../bars/Sidebar';
 
 export default function Container({ children, showActivies }) {
   return (
