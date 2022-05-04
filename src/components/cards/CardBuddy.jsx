@@ -14,7 +14,7 @@ export default function CardBuddy({ buddy, removeBuddy, likeBuddy }) {
   }
 
   return (
-    <div className="h-96 w-64 bg-theme-dark rounded-md flex flex-col justify-between p-4">
+    <div className="h-96 w-full bg-theme-dark rounded-md flex flex-col justify-between p-4">
       <div className="flex flex-row items-center">
         <img
           src={buddy.img}
