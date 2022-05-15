@@ -12,7 +12,7 @@ export default function Dashboard() {
     { name: 'CS:GO', image: './games/csgo.jpeg' },
     { name: 'Dota 2', image: './games/dota2.jpeg' },
     { name: 'Fifa 22', image: './games/fifa22.jpeg' },
-    { name: 'Fortnite', image: './games/fortnite.jpeg' },
+    { name: 'Fornite', image: './games/fortnite.jpeg' },
     { name: 'GTA V', image: './games/gtav.jpeg' },
     { name: 'LOL', image: './games/lol.jpeg' },
     { name: 'Minecraft', image: './games/minecraft.jpeg' },
@@ -25,15 +25,15 @@ export default function Dashboard() {
     { name: 'Riot', image: './platforms/riot.png' },
     { name: 'Blizzard', image: './platforms/blizzard.jpg' },
     { name: 'Origin', image: './platforms/origin.png', background: 'white' },
-    { name: 'Playstation', image: './platforms/playstation.jpeg' },
+    { name: 'PS', image: './platforms/playstation.jpeg' },
     { name: 'Xbox', image: './platforms/xbox.jpeg' },
     { name: 'Switch', image: './platforms/switch.png' },
   ];
   const setUser = useSetRecoilState(userState);
   const navigate = useNavigate();
 
-  function navigateToFindBuddies(filter) {
-    navigate(`/findbuddies?filter=${filter}`);
+  function navigateToFindBuddies(platform, game) {
+    navigate(`/findbuddies?platform=${platform}&game=${game}`);
   }
 
   function signOut() {
@@ -42,40 +42,58 @@ export default function Dashboard() {
     window.location = '/';
   }
 
-  function renderCard(item, index) {
+  function renderCard(item, index, isPlatform) {
     return (
       <CardPlatformGame
         key={index}
         item={item}
-        onClick={navigateToFindBuddies}
+        onClick={() =>
+          navigateToFindBuddies(
+            isPlatform ? item.name : '',
+            isPlatform ? '' : item.name,
+          )
+        }
       />
     );
   }
 
   return (
     <Container>
-      {/** HEADER */}
-      <div className="flex flex-row justify-between">
-        <h1 className="text-white font-medium text-2xl">Dashboard</h1>
-        <div className="flex flex-row items-center gap-x-5">
-          <FontAwesomeIcon className="text-white" size={'lg'} icon={faBell} />
-          <button onClick={signOut} className="text-theme-green w-fit text-sm">
-            Sign out
-          </button>
+      <div className="h-full overflow-y-scroll">
+        {/** HEADER */}
+        <div className="flex flex-row justify-between">
+          <h1 className="text-white font-medium text-2xl">Dashboard</h1>
+          <div className="flex flex-row items-center gap-x-5">
+            <FontAwesomeIcon className="text-white" size={'lg'} icon={faBell} />
+            <button
+              onClick={signOut}
+              className="text-theme-green w-fit text-sm"
+            >
+              Sign out
+            </button>
+          </div>
         </div>
+        {/** BANNER */}
+        <img
+          src={'./banner.jpeg'}
+          alt="banner"
+          className="rounded-md w-full h-80 mt-6 object-fit"
+        />
+        {/** PLATFORM LIST */}
+        <h3 className="text-white text-2xl mt-6 mb-2">Platforms</h3>
+        <ScrollList
+          data={platforms}
+          renderItem={(item, index) => renderCard(item, index, true)}
+          horizontal
+        />
+        {/** GAME LIST */}
+        <h3 className="text-white text-2xl mt-6 mb-2">Games</h3>
+        <ScrollList
+          data={games}
+          renderItem={(item, index) => renderCard(item, index, false)}
+          horizontal
+        />
       </div>
-      {/** BANNER */}
-      <img
-        src={'./banner.jpeg'}
-        alt="banner"
-        className="rounded-md w-full h-80 mt-6 object-fit"
-      />
-      {/** PLATFORM LIST */}
-      <h3 className="text-white text-2xl mt-6 mb-2">Platforms</h3>
-      <ScrollList data={platforms} renderItem={renderCard} horizontal />
-      {/** GAME LIST */}
-      <h3 className="text-white text-2xl mt-6 mb-2">Games</h3>
-      <ScrollList data={games} renderItem={renderCard} horizontal />
     </Container>
   );
 }
