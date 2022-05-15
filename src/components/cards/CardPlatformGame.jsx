@@ -1,7 +1,7 @@
 export default function CardPlatformGame({ item, onClick }) {
   return (
     <li
-      onClick={onClick ? () => onClick(item.name) : null}
+      onClick={onClick ? () => onClick() : null}
       className="min-w-48 w-48 h-64 hover:scale-105 duration-300 cursor-pointer"
     >
       <img
