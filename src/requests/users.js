@@ -1,5 +1,21 @@
 import { apiGet, apiPut } from './client';
 
+export async function getUsers(
+  skip,
+  limit,
+  platform = undefined,
+  game = undefined,
+) {
+  try {
+    const queryParams = `?skip=${skip}&platform=${platform}&game=${game}&limit=${limit}`;
+    const res = await apiGet('/api/users' + queryParams);
+    return res.data;
+  } catch (error) {
+    console.log('Failed fetching all users', error);
+    throw error;
+  }
+}
+
 export async function getOwnUser() {
   try {
     return await apiGet('/api/users/own');
