@@ -3,7 +3,6 @@ import { apiGet, apiPost } from './client';
 export async function getMatches(skip, limit) {
   try {
     const res = await apiGet(`/api/swipes/matches?skip=${skip}&limit=${limit}`);
-    console.log(res.data);
     return res.data;
   } catch (error) {
     console.log('Failed fetching matches', error);
