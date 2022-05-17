@@ -10,7 +10,7 @@ export default function Modal({ visible, children }) {
         }`}
       />
       <div
-        className={`z-10 h-full w-full md:justify-start md:h-1/2 md:w-1/2 bg-theme-dark border-2 border-theme-green absolute top-1/2 left-1/2 bottom-0 transform -translate-x-1/2 -translate-y-1/2 rounded-md p-4 duration-300 ${
+        className={`z-10 h-full w-full lg:justify-start lg:h-1/2 lg:w-1/2 bg-theme-dark border-2 border-theme-green absolute top-1/2 left-1/2 bottom-0 transform -translate-x-1/2 -translate-y-1/2 rounded-md p-4 duration-300 ${
           visible ? 'scale-100' : 'scale-0'
         }`}
       >
