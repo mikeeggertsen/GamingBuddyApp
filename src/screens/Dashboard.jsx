@@ -64,10 +64,9 @@ export default function Dashboard() {
         <div className="flex flex-row justify-between">
           <h1 className="text-white font-medium text-2xl">Dashboard</h1>
           <div className="flex flex-row items-center gap-x-5">
-            <FontAwesomeIcon className="text-white" size={'lg'} icon={faBell} />
             <button
               onClick={signOut}
-              className="text-theme-green w-fit text-sm"
+              className="bg-theme-green text-white px-4 py-1 rounded-md text-sm"
             >
               Sign out
             </button>
