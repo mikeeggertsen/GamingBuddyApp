@@ -20,11 +20,11 @@ export default function Modal({ visible, children }) {
   );
 }
 
-export function ModalAdd({ visible, onClose, title, placeholder, onSubmit }) {
+export function ModalAddGame({ visible, onClose, onSubmit }) {
   return (
     <Modal visible={visible}>
       <div className="flex flex-row justify-between">
-        <h1 className="text-white text-xl mb-12">{title}</h1>
+        <h1 className="text-white text-xl mb-12">Add game</h1>
         <FontAwesomeIcon
           onClick={onClose}
           className="text-white text-2xl cursor-pointer"
@@ -32,11 +32,52 @@ export function ModalAdd({ visible, onClose, title, placeholder, onSubmit }) {
         />
       </div>
       <form onSubmit={onSubmit} className="flex flex-col items-center gap-6">
-        <input
-          className="rounded-md px-4 py-2 w-full"
-          type="text"
-          placeholder={placeholder}
+        <select className="w-full py-2 rounded-md">
+          <option defaultValue={0}>Choose a game</option>
+          <option value={1}>Fortnite</option>
+          <option value={2}>CS:GO</option>
+          <option value={3}>Valorant</option>
+          <option value={4}>League of Legends</option>
+          <option value={5}>Rocket League</option>
+          <option value={6}>FIFA 22</option>
+          <option value={7}>Dota 2</option>
+          <option value={8}>World of Warcraft</option>
+          <option value={9}>GTA V</option>
+          <option value={10}>Minecraft</option>
+        </select>
+        <button
+          className="w-full bg-theme-green h-10 rounded-md text-white"
+          type="submit"
+        >
+          Add
+        </button>
+      </form>
+    </Modal>
+  );
+}
+
+export function ModalAddPlatform({ visible, onClose, onSubmit }) {
+  return (
+    <Modal visible={visible}>
+      <div className="flex flex-row justify-between">
+        <h1 className="text-white text-xl mb-12">Add platform</h1>
+        <FontAwesomeIcon
+          onClick={onClose}
+          className="text-white text-2xl cursor-pointer"
+          icon={faClose}
         />
+      </div>
+      <form onSubmit={onSubmit} className="flex flex-col items-center gap-6">
+        <select className="w-full py-2 rounded-md">
+          <option defaultValue={0}>Choose a platform</option>
+          <option value={1}>Steam</option>
+          <option value={2}>Riot</option>
+          <option value={3}>Blizzard</option>
+          <option value={4}>Origin</option>
+          <option value={5}>Playstation</option>
+          <option value={6}>Xbox</option>
+          <option value={7}>Switch</option>
+        </select>
         <button
           className="w-full bg-theme-green h-10 rounded-md text-white"
           type="submit"
