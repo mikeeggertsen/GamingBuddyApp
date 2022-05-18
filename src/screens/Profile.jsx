@@ -115,8 +115,8 @@ export default function Profile() {
   }
 
   return (
-    <Container>
-      <div className="w-full h-full overflow-y-scroll pb-8 relative">
+    <Container scroll>
+      <div className="relative">
         {prompt && (
           <div
             className={`${

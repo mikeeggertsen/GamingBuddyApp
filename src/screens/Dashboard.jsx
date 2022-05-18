@@ -58,41 +58,39 @@ export default function Dashboard() {
   }
 
   return (
-    <Container>
-      <div className="h-full overflow-y-scroll">
-        {/** HEADER */}
-        <div className="flex flex-row justify-between">
-          <h1 className="text-white font-medium text-2xl">Dashboard</h1>
-          <div className="flex flex-row items-center gap-x-5">
-            <button
-              onClick={signOut}
-              className="bg-theme-green text-white px-4 py-1 rounded-md text-sm"
-            >
-              Sign out
-            </button>
-          </div>
+    <Container scroll>
+      {/** HEADER */}
+      <div className="flex flex-row justify-between">
+        <h1 className="text-white font-medium text-2xl">Dashboard</h1>
+        <div className="flex flex-row items-center gap-x-5">
+          <button
+            onClick={signOut}
+            className="bg-theme-green text-white px-4 py-1 rounded-md text-sm"
+          >
+            Sign out
+          </button>
         </div>
-        {/** BANNER */}
-        <img
-          src={'./banner.jpeg'}
-          alt="banner"
-          className="rounded-md w-full h-80 mt-6 object-fit"
-        />
-        {/** PLATFORM LIST */}
-        <h3 className="text-white text-2xl mt-6 mb-2">Platforms</h3>
-        <ScrollList
-          data={platforms}
-          renderItem={(item, index) => renderCard(item, index, true)}
-          horizontal
-        />
-        {/** GAME LIST */}
-        <h3 className="text-white text-2xl mt-6 mb-2">Games</h3>
-        <ScrollList
-          data={games}
-          renderItem={(item, index) => renderCard(item, index, false)}
-          horizontal
-        />
       </div>
+      {/** BANNER */}
+      <img
+        src={'./banner.jpeg'}
+        alt="banner"
+        className="rounded-md w-full h-80 mt-6 object-fit"
+      />
+      {/** PLATFORM LIST */}
+      <h3 className="text-white text-2xl mt-6 mb-2">Platforms</h3>
+      <ScrollList
+        data={platforms}
+        renderItem={(item, index) => renderCard(item, index, true)}
+        horizontal
+      />
+      {/** GAME LIST */}
+      <h3 className="text-white text-2xl mt-6 mb-2">Games</h3>
+      <ScrollList
+        data={games}
+        renderItem={(item, index) => renderCard(item, index, false)}
+        horizontal
+      />
     </Container>
   );
 }
