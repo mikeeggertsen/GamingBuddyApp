@@ -65,7 +65,7 @@ export default function Dashboard() {
         <div className="flex flex-row items-center gap-x-5">
           <button
             onClick={signOut}
-            className="bg-theme-green text-white px-4 py-1 rounded-md text-sm"
+            className="bg-theme-green hover:opacity-80 text-white px-4 py-1 rounded-md text-sm"
           >
             Sign out
           </button>
@@ -75,7 +75,7 @@ export default function Dashboard() {
       <img
         src={'./banner.jpeg'}
         alt="banner"
-        className="rounded-md w-full h-80 mt-6 object-fit"
+        className="rounded-md w-full h-80 mt-6 object-cover md:object-fit"
       />
       {/** PLATFORM LIST */}
       <h3 className="text-white text-2xl mt-6 mb-2">Platforms</h3>
