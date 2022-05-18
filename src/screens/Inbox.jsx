@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Container from '../components/layout/Container';
 import Modal from '../components/modals/Modals';
 import { useDimensions } from '../hooks/useDimensions';
 import { getMatches } from '../requests/swipe';
 import InfiniteScrollList from '../components/lists/InfiniteScrollList';
 import Chat from '../components/inbox/Chat';
+import { useSearchParams } from 'react-router-dom';
 
 const LIMIT = 10;
 
@@ -13,6 +14,13 @@ export default function Inbox() {
   const [matches, setMatches] = useState([]);
   const dimensions = useDimensions();
   const isMobile = dimensions?.width <= 1024;
+  const [searchParams] = useSearchParams();
+
+  useEffect(() => {
+    const id = searchParams.get('id');
+    const chat = matches.find((item) => item.id === id);
+    setSelectedChat(chat);
+  }, [matches, searchParams]);
 
   async function fetchMatches(skip) {
     return await getMatches(skip, LIMIT);

@@ -6,8 +6,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ScrollList from '../lists/ScrollList';
 import { gameImageParser, platformImageParser } from '../../utils/imageParser';
+import { useNavigate } from 'react-router-dom';
 
 export default function CardBuddy({ buddy, swipe, isMatch }) {
+  const navigate = useNavigate();
+
   function renderPlatformOrGame(item, index) {
     return (
       <img
@@ -21,6 +24,10 @@ export default function CardBuddy({ buddy, swipe, isMatch }) {
         alt="game"
       />
     );
+  }
+
+  function navigateToInbox() {
+    navigate(`/inbox?id=${buddy.id}`);
   }
 
   return (
@@ -92,7 +99,10 @@ export default function CardBuddy({ buddy, swipe, isMatch }) {
             />
           </div>
         ) : (
-          <div className="bg-theme-green rounded-full w-12 h-12 flex items-center justify-center cursor-pointer">
+          <div
+            onClick={navigateToInbox}
+            className="bg-theme-green rounded-full w-12 h-12 flex items-center justify-center cursor-pointer"
+          >
             <FontAwesomeIcon
               className={'w-6 text-slate-700'}
               icon={faPaperPlane}
