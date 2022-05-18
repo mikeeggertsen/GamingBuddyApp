@@ -18,6 +18,35 @@ export default function Inbox() {
     return await getMatches(skip, LIMIT);
   }
 
+  function handleSearchChange(event) {
+    const search = event.target.value;
+    const searchMatches = matches.map((item) => {
+      const score = simpleSearch(item.username, search);
+      item.score = score;
+      return item;
+    });
+    const sortedMatches = searchMatches.sort((a, b) => b.score - a.score);
+    setMatches(sortedMatches);
+  }
+
+  function simpleSearch(username, search) {
+    let numOfConsecutiveChars = 0;
+    for (let i = 0; i < username.length; i++) {
+      if (search.length >= i) {
+        if (
+          username.toLowerCase().charAt(i) === search.toLowerCase().charAt(i)
+        ) {
+          numOfConsecutiveChars++;
+        } else {
+          break;
+        }
+      } else {
+        break;
+      }
+    }
+    return numOfConsecutiveChars;
+  }
+
   function renderChat(item, index) {
     return (
       <div
@@ -65,6 +94,7 @@ export default function Inbox() {
               className="bg-theme-dark rounded-md px-4 py-1 mb-4 text-white"
               type="text"
               placeholder="Search"
+              onChange={handleSearchChange}
             />
             <InfiniteScrollList
               className="flex flex-col bg-theme-dark h-full mb-4 rounded-md overflow-y-scroll"
@@ -76,7 +106,7 @@ export default function Inbox() {
               pagination={LIMIT}
             />
           </div>
-          {!isMobile && matches?.lenght > 0 && (
+          {!isMobile && matches?.length > 0 && (
             <div className="flex flex-1 bg-theme-dark md:mb-4 md:ml-4 relative rounded-md">
               {!!selectedChat ? (
                 <Chat
@@ -91,7 +121,7 @@ export default function Inbox() {
             </div>
           )}
           <Modal visible={!!selectedChat && isMobile}>
-            <div className="bg-theme-light-dark w-full h-full relative">
+            <div className="bg-theme-light-dark w-full h-full relative pb-12">
               <Chat
                 selectedChat={selectedChat}
                 onDismiss={() => setSelectedChat(undefined)}
