@@ -9,7 +9,7 @@ export default function Container({ children, scroll }) {
     <div className="flex">
       {isMobile ? <Bottombar /> : <Sidebar />}
       <div
-        className={`h-screen w-screen overflow-hidden px-4 lg:px-20 pt-8 pb-24 md:pb-8 bg-theme-light-dark ${
+        className={`h-screen w-screen overflow-hidden px-4 lg:px-20 pt-8 pb-24 lg:pb-8 bg-theme-light-dark ${
           scroll && 'overflow-y-scroll'
         }`}
       >
