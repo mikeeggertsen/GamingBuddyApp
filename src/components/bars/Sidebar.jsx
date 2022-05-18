@@ -50,18 +50,17 @@ export default function Sidebar() {
                 item.path === window.location.pathname && 'bg-theme-light-dark'
               } rounded-md text-sm cursor-pointer mt-6`}
             >
-              <Link
-                className="items-center flex gap-x-4 p-2 py-4"
-                to={item.path}
-              >
+              <Link className="items-center flex gap-x-4 p-3" to={item.path}>
                 <FontAwesomeIcon
-                  className={'w-6 text-slate-700'}
+                  className={`w-6 ${
+                    item.path === window.location.pathname
+                      ? 'text-theme-green'
+                      : 'text-slate-600'
+                  }`}
                   icon={item.icon}
                   size={'lg'}
                 />
-                <h5
-                  className={`${!open && 'scale-0'} origin-left duration-500`}
-                >
+                <h5 className={`${!open && 'hidden'} origin-left duration-500`}>
                   {item.title}
                 </h5>
               </Link>
