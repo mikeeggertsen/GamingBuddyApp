@@ -6,11 +6,11 @@ export default function SignUp() {
   const [showSignIn, setShowSignIn] = useState(true);
 
   return (
-    <div className="flex">
-      <div className="flex justify-center items-center h-screen w-1/2 bg-theme-dark p-6">
-        <img src="/gamestand.svg" alt="gamestand" />
+    <div className="flex flex-col lg:flex-row h-screen bg-theme-light-dark overflow-auto">
+      <div className="justify-center items-center h-full hidden lg:flex w-1/2 bg-theme-dark">
+        <img className="h-full" src="/gamestand.svg" alt="gamestand" />
       </div>
-      <div className="flex flex-col items-center p-12 h-screen w-1/2 bg-theme-light-dark gap-12">
+      <div className="flex flex-col items-center lg:w-1/2 gap-8 py-12">
         <div className="flex flex-col items-center gap-6 w-2/3">
           <img className="h-32 w-auto" src="/signup.svg" alt="logo" />
           <h1 className="text-white text-center font-bold text-3xl">
