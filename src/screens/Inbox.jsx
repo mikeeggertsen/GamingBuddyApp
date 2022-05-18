@@ -41,6 +41,20 @@ export default function Inbox() {
     );
   }
 
+  function renderNoChat() {
+    return (
+      <div className="flex flex-col h-full w-full justify-center items-center">
+        <h2 className="text-white text-xl font-normal">
+          You don't have any matches and therefore no chats
+        </h2>
+        <p className="text-white text-xs font-normal mt-2">
+          So what are you waiting for? Find your Gaming Buddy!
+        </p>
+        <img className="w-2/3 h-2/3" src="/findbuddies.svg" alt="No matches" />
+      </div>
+    );
+  }
+
   return (
     <Container>
       <div className="w-full h-full">
@@ -58,11 +72,11 @@ export default function Inbox() {
               setItems={setMatches}
               getData={fetchMatches}
               renderItem={renderChat}
-              renderEmptyListComponent={() => <h1>No chats</h1>}
+              renderEmptyListComponent={renderNoChat}
               pagination={LIMIT}
             />
           </div>
-          {!isMobile && (
+          {!isMobile && matches?.lenght > 0 && (
             <div className="flex flex-1 bg-theme-dark md:mb-4 md:ml-4 relative rounded-md">
               {!!selectedChat ? (
                 <Chat
