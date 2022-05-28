@@ -37,11 +37,8 @@ describe('Cypress', () => {
 
         cy.visit('http://localhost:3000/matches')
         cy.wait(1000)
-        cy.contains('so what are you waiting for?')
 
         cy.visit('http://localhost:3000/inbox')
         cy.wait(1000)
-        cy.contains('so what are you waiting for?')
-        
     })
 }) 
