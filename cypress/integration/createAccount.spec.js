@@ -15,7 +15,7 @@ describe('Cypress', () => {
 
         //Click sign up to create account
         cy.get('.bg-theme-green').click()
-        cy.wait(1000)
+        cy.wait(3000)
 
         //Sign in with new account
         cy.get('[type="email"]').click().type(email)
