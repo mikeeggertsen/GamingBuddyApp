@@ -20,6 +20,5 @@ describe('Cypress', () => {
         //swipe right on the new second buddy
         cy.get(':nth-child(2) > .justify-around > .bg-theme-green').click()
         cy.wait(2000)
-
     })
 }) 
