@@ -37,7 +37,7 @@ export default function Chat({ selectedChat, onDismiss }) {
       content: input,
       createdAt: Date.now(),
       user: {
-        id: selectedChat.id,
+        id: selectedChat.receivingId,
         username: selectedChat.username,
       },
     };
@@ -46,7 +46,7 @@ export default function Chat({ selectedChat, onDismiss }) {
   }
 
   function renderMessage(item) {
-    const ownMsg = user.id !== item.user.id;
+    const ownMsg = item.sent;
     return (
       <div key={item.id} className="w-full">
         <div
